@@ -7,7 +7,24 @@ namespace StackDemo1
         static void Main(string[] args)
         {
 
-            //TODO
+            Stack theStack = new Stack(4);
+            theStack.Push("Star Wars");
+            theStack.Push("Jaws");
+            theStack.Push("Jaws 2");
+            theStack.Push("Titanic");
+            theStack.Push("Rocky");
+
+            Console.WriteLine("+++++++++++++++++++++++++++++\nAbout to peek: \n");
+            Console.WriteLine($"'{ theStack.Peek() }' is at the top of the stack.\n' ");
+
+
+            Console.WriteLine("+++++++++++++++++++++++++++++\nThe Stack contains: \n");
+
+            while (!theStack.IsEmpty())
+            {
+                string movie = theStack.Pop();
+                Console.WriteLine(movie);
+            }
         }
 
         public class Stack
@@ -38,7 +55,7 @@ namespace StackDemo1
 
             public string Pop()
             {
-                if (isEmpty())
+                if (IsEmpty())
                 {
                     Console.WriteLine("The stack is empty");
                     return "--";
@@ -51,12 +68,17 @@ namespace StackDemo1
                 }
             }
 
+            public string Peek()
+            {
+                return stackArray[top];
+            }
+
             private bool isFull()
             {
                 return (maxSize - 1 == top);
             }
 
-            private bool isEmpty()
+            public bool IsEmpty()
             {
                 return (top == -1);
             }
